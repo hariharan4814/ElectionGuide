@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectionGuide India - Reminders</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            saffron: {
+              DEFAULT: '#FF9933',
+              hover: '#e68019',
+              light: '#ffeacc',
+              glow: 'rgba(255, 153, 51, 0.35)'
+            },
+            green_eci: {
+              DEFAULT: '#138808',
+              hover: '#0e6605',
+              light: '#e8f5e9',
+              glow: 'rgba(19, 136, 8, 0.35)'
+            },
+            'green-eci': {
+              DEFAULT: '#138808',
+              hover: '#0e6605',
+              light: '#e8f5e9',
+              glow: 'rgba(19, 136, 8, 0.35)'
+            },
+            navy_eci: {
+              DEFAULT: '#000080',
+              hover: '#00004d',
+              light: '#e6e6ff',
+              glow: 'rgba(0, 0, 128, 0.25)'
+            },
+            'navy-eci': {
+              DEFAULT: '#000080',
+              hover: '#00004d',
+              light: '#e6e6ff',
+              glow: 'rgba(0, 0, 128, 0.25)'
+            },
+            warm_bg: '#FFF9F0',
+            dark_bg: '#1a1a2e',
+            dark_card: '#16213e',
+            dark_text: '#eee',
+          },
+          fontFamily: {
+            sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Inter", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+</head>
+<body class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 flex flex-col page-enter">
+
+  <!-- Header -->
+  <nav class="sticky top-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo" class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
+        <div class="border-l border-gray-300 dark:border-gray-600 pl-2 sm:pl-3">
+          <div class="flex items-center space-x-1">
+            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight" data-i18n="logo_title">ElectionGuide India</span>
+            <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
+          </div>
+          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your Personal Election Assistant</p>
+        </div>
+      </div>
+      
+      <!-- Desktop Nav links -->
+      <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+        <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_home">Home</a>
+        <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_dashboard">Dashboard</a>
+        <a href="evm-practice.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_evm">EVM Simulator</a>
+        <a href="more.html" class="text-saffron border-b-2 border-saffron pb-1" data-i18n="nav_more">More Features</a>
+      </div>
+
+      <!-- Widgets -->
+      <div class="flex items-center space-x-3">
+        <!-- Translator Dropdown -->
+        <div class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
+          <i data-lucide="languages" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
+          <select id="language-select" class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none" aria-label="Translate Language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ta">தமிழ்</option>
+            <option value="ml">മലയാളം</option>
+            <option value="kn">ಕನ್ನಡ</option>
+          </select>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    
+    <div>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy-eci dark:text-white" data-i18n="nav_reminders">My Voting Reminders</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Set alarms or reminders for voter registration cutoffs, voting days, and campaign dates. Integrates with system notifications.</p>
+    </div>
+
+    <!-- Reminders panel grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Left Column: Add Reminder Form -->
+      <div class="bg-white dark:bg-dark_card glass-card p-6 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/80">
+        <h3 class="font-extrabold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wider mb-4">Add Custom Reminder</h3>
+        
+        <form id="reminder-form" onsubmit="submitReminderForm(event)" class="space-y-4">
+          <div class="space-y-2">
+            <label for="reminder-text" class="block text-xs font-bold text-gray-500">Reminder Label</label>
+            <input type="text" id="reminder-text" placeholder="e.g., File Form 6 Registration" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron text-sm" />
+          </div>
+
+          <div class="space-y-2">
+            <label for="reminder-date" class="block text-xs font-bold text-gray-500">Reminder Date</label>
+            <input type="date" id="reminder-date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron text-sm" />
+          </div>
+
+          <button type="submit" class="w-full py-2.5 bg-saffron hover:bg-saffron-hover text-white font-bold rounded-xl transition-all shadow-md active:scale-95 text-sm flex items-center justify-center space-x-1">
+            <i data-lucide="bell" class="w-4 h-4"></i>
+            <span>Add Reminder</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Reminders List -->
+      <div class="lg:col-span-2 bg-white dark:bg-dark_card glass-card p-6 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/80 flex flex-col justify-between">
+        <div>
+          <h3 class="font-extrabold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wider mb-4 flex items-center justify-between">
+            <span>Active Reminders</span>
+            <span id="reminders-count" class="text-xs font-black bg-saffron/20 text-saffron px-2.5 py-0.5 rounded-full">0</span>
+          </h3>
+
+          <div id="reminders-list" class="space-y-3 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+        
+        <p class="text-[11px] text-gray-400 mt-4 border-t border-gray-100 dark:border-gray-800 pt-3 font-semibold">
+          Note: System reminders trigger on load if dates match or fall in the past. Enable browser notifications when prompted.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Sticky Bottom Navigation Bar on Mobile -->
+  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-dark_card/95 border-t border-gray-200 dark:border-gray-800 shadow-lg backdrop-blur-md px-4 py-2 flex justify-around items-center">
+    <a href="index.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
+      <i data-lucide="home" class="w-5 h-5"></i>
+      <span class="text-[10px] font-bold mt-1">Home</span>
+    </a>
+    <a href="dashboard.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
+      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+      <span class="text-[10px] font-bold mt-1">Roadmap</span>
+    </a>
+    <a href="evm-practice.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
+      <i data-lucide="vote" class="w-5 h-5"></i>
+      <span class="text-[10px] font-bold mt-1">EVM</span>
+    </a>
+    <a href="more.html" class="flex flex-col items-center text-saffron transition-all active:scale-95">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+      <span class="text-[10px] font-bold mt-1">More</span>
+    </a>
+  </div>
+
+  <!-- Floating Helper FAB -->
+  <div class="fixed bottom-6 right-6 z-40 fab-bounce">
+    <button onclick="toggleHelpDrawer()" class="flex items-center justify-center bg-saffron hover:bg-saffron-hover text-white w-14 h-14 rounded-full shadow-2xl active:scale-95 transition-theme" aria-label="Support Center">
+      <i data-lucide="help-circle" class="w-7 h-7"></i>
+    </button>
+  </div>
+
+  <!-- Floating Help Drawer -->
+  <div id="help-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white dark:bg-dark_card border-l border-gray-200 dark:border-gray-800 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-4">
+      <div class="flex items-center space-x-2 text-navy-eci dark:text-saffron">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <h3 class="font-extrabold text-base">Quick Help Drawer</h3>
+      </div>
+      <button onclick="toggleHelpDrawer()" class="p-1 rounded-lg text-gray-400 hover:bg-gray-100 dark:hover:bg-dark_bg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="space-y-4 text-xs">
+      <div class="space-y-1.5">
+        <span class="font-bold text-gray-400 block uppercase tracking-wider">ECI Help Desk</span>
+        <a href="tel:1950" class="flex items-center space-x-2 text-saffron font-bold text-sm bg-saffron/10 p-2.5 rounded-lg">
+          <i data-lucide="phone-call" class="w-4 h-4"></i>
+          <span>Voter Helpline: 1950</span>
+        </a>
+      </div>
+      <div class="space-y-1">
+        <span class="font-bold text-gray-400 block uppercase tracking-wider">Am I Eligible?</span>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          You must be an Indian citizen, at least 18 years old on January 1st of the revision year, and registered in the electoral roll of your polling constituency.
+        </p>
+      </div>
+      <div class="space-y-2 border-t border-gray-100 dark:border-gray-800 pt-3">
+        <span class="font-bold text-gray-400 block uppercase tracking-wider">Official Voter App</span>
+        <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank" class="flex items-center justify-between bg-navy-eci text-white p-2.5 rounded-lg hover:bg-navy_eci-hover transition-colors font-bold">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="smartphone" class="w-4.5 h-4.5"></i>
+            <span>Voter Helpline Mobile</span>
+          </div>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-8">
+        <div class="flex items-center space-x-3">
+          <img id="footer-logo" src="eci-logo-white.png" alt="ECI White Logo" class="h-10 w-auto">
+          <div class="border-l border-white/20 pl-3">
+            <span class="text-lg font-black tracking-tight text-white block">ElectionGuide India</span>
+            <span class="text-xs text-gray-300 block">Your Independent Guide to Voting and Democracy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <p class="max-w-3xl leading-relaxed text-center md:text-left" data-i18n="footer_disclaimer">
+          Disclaimer: This is an independent educational guide. Always refer to the official ECI portal for binding electoral rules.
+        </p>
+        <div class="text-center md:text-right whitespace-nowrap">
+          <p>Last Updated: May 27, 2026</p>
+          <p class="mt-0.5">&copy; 2026 ElectionGuide India.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="data/electionData.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/reminders.js"></script>
+  
+  <script>
+    // Inline Toast Helper
+    function showToast(message, type = 'info') {
+      const toastContainer = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      let bg = 'bg-navy-eci';
+      let icon = 'info';
+      if (type === 'success') { bg = 'bg-green_eci'; icon = 'check-circle'; }
+      if (type === 'error') { bg = 'bg-red-600'; icon = 'alert-triangle'; }
+      if (type === 'warning') { bg = 'bg-saffron'; icon = 'bell'; }
+      
+      toast.className = `flex items-center space-x-3 text-white px-5 py-3.5 rounded-xl shadow-lg transform transition-all duration-300 translate-y-2 opacity-0 max-w-sm ${bg}`;
+      toast.innerHTML = `
+        <i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i>
+        <span class="text-xs font-semibold leading-snug">${message}</span>
+      `;
+      toastContainer.appendChild(toast);
+      lucide.createIcons();
+      setTimeout(() => { toast.classList.remove('translate-y-2', 'opacity-0'); }, 50);
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => { toastContainer.removeChild(toast); }, 300);
+      }, 4000);
+    }
+
+    function toggleHelpDrawer() {
+      const drawer = document.getElementById('help-drawer');
+      drawer.classList.toggle('translate-x-full');
+    }
+
+    function shareSocial(platform) {
+      const pageUrl = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent("Check out ElectionGuide India, your personal assistant to understanding the voting process!");
+      let shareUrl = "";
+      if (platform === 'twitter') {
+        shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${text}`;
+      } else if (platform === 'whatsapp') {
+        shareUrl = `https://api.whatsapp.com/send?text=${text}%20${pageUrl}`;
+      }
+      if (shareUrl) window.open(shareUrl, '_blank');
+    }
+  </script>
+</body>
+</html>

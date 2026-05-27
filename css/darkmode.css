@@ -1,0 +1,43 @@
+/* Dark Mode Specialized Styles & Glassmorphism Rules */
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 153, 51, 0.6);
+}
+
+/* Custom Glassmorphism card layouts for dark mode */
+.dark .glass-card {
+  background: rgba(22, 33, 62, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle glow animations for dark mode cards */
+.dark .glass-card-glow {
+  box-shadow: 0 0 20px rgba(255, 153, 51, 0.15);
+  border-color: rgba(255, 153, 51, 0.3);
+}
+
+.dark .glass-card-glow-green {
+  box-shadow: 0 0 20px rgba(19, 136, 8, 0.15);
+  border-color: rgba(19, 136, 8, 0.3);
+}
+
+/* Pulse effects for dark mode tokens */
+@keyframes darkPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 153, 51, 0);
+  }
+}
+
+.dark .token-active-pulse {
+  animation: darkPulse 2s infinite ease-in-out;
+}

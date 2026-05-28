@@ -1,16 +1,13 @@
 // Timeline Phases Management Logic with Vertical Scroll Inertia
 
+// Native scroll-snap integration variables
 let completedPhases = [];
-let targetY = 0, currentY = 0, velocity = 0, touchStartY = 0;
-let lastTouchY = 0;
-let isDragging = false;
-const friction = 0.92, lerp = 0.1, sensitivity = 0.8;
 
 document.addEventListener('DOMContentLoaded', () => {
   completedPhases = storage.getCompletedPhases();
   buildTimeline();
   setupScrollHandlers();
-  update();
+  setTimeout(updateScrollProgress, 100);
   
   // Translate elements once on load
   const activeLang = storage.getLanguage();
@@ -19,6 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('languageChanged', (e) => {
     translateTimelineContent(e.detail);
   });
+
+  // Check for query param phase deep link
+  const urlParams = new URLSearchParams(window.location.search);
+  const phaseParam = urlParams.get('phase');
+  if (phaseParam) {
+    const phaseId = parseInt(phaseParam, 10);
+    if (phaseId >= 1 && phaseId <= 6) {
+      setTimeout(() => {
+        scrollToStep(phaseId);
+      }, 500);
+    }
+  }
 });
 
 function buildTimeline() {
@@ -72,7 +81,7 @@ function buildTimeline() {
       const actionKey = `action_${phase.id}_${idx}`;
       const actionCompleted = localStorage.getItem(actionKey) === 'true';
       return `
-        <label class="flex items-start space-x-3 bg-gray-50 dark:bg-dark_bg/50 border border-gray-100 dark:border-gray-800/80 p-3 rounded-xl cursor-pointer hover:border-saffron/30 dark:hover:border-saffron/20 transition-all select-none">
+        <label class="flex items-start space-x-3 bg-gray-50 dark:bg-dark_bg/50 border border-gray-100 dark:border-gray-800/80 p-2 sm:p-3 rounded-xl cursor-pointer hover:border-saffron/30 dark:hover:border-saffron/20 transition-all select-none">
           <input type="checkbox" 
                  class="action-checkbox mt-0.5 w-4.5 h-4.5 text-saffron border-gray-300 dark:border-gray-700 rounded focus:ring-saffron bg-white dark:bg-dark_card" 
                  data-phase="${phase.id}" 
@@ -105,7 +114,7 @@ function buildTimeline() {
             
             <p class="text-xs font-semibold text-saffron/90 dark:text-saffron/80">Schedule: ${phase.dateRange}</p>
             
-            <div class="flex flex-col gap-2 mt-2 max-h-[30vh] overflow-y-auto pr-1 custom-scrollbar">
+            <div class="flex flex-col gap-2 mt-2 max-h-[22vh] sm:max-h-[30vh] overflow-y-auto pr-1 custom-scrollbar">
               ${actionsHtml}
             </div>
 
@@ -307,77 +316,51 @@ function setReminderShortcut(phaseId) {
 }
 
 function scrollToStep(stepIndex) {
-  const stepHeight = window.innerHeight;
-  targetY = stepIndex * stepHeight;
+  const target = document.getElementById(`step-${stepIndex}`);
+  if (target) {
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 }
 
 function setupScrollHandlers() {
-  window.addEventListener('wheel', (e) => {
-    velocity += e.deltaY * sensitivity;
-  }, { passive: true });
-
-  window.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-    lastTouchY = touchStartY;
-    velocity = 0;
-    isDragging = true;
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const currentTouchY = e.touches[0].clientY;
-    const deltaY = lastTouchY - currentTouchY;
-    targetY += deltaY * 1.5;
-    lastTouchY = currentTouchY;
-  }, { passive: true });
-
-  window.addEventListener('touchend', (e) => {
-    isDragging = false;
-    const delta = touchStartY - e.changedTouches[0].clientY;
-    velocity = delta * 1.8;
-  }, { passive: true });
-
-  // Handle Resize and load adjustments
-  window.addEventListener('load', adjustScrollBoundaries);
-  window.addEventListener('resize', adjustScrollBoundaries);
-}
-
-function adjustScrollBoundaries() {
   const wrapper = document.getElementById('scroll-wrapper');
   if (!wrapper) return;
-  document.body.style.height = wrapper.scrollHeight + 'px';
+  wrapper.addEventListener('scroll', () => {
+    updateScrollProgress();
+  }, { passive: true });
+  
+  window.addEventListener('resize', () => {
+    updateScrollProgress();
+  });
 }
 
-function update() {
+function updateScrollProgress() {
   const wrapper = document.getElementById('scroll-wrapper');
   const items = document.querySelectorAll('.timeline-item');
   const progressLine = document.getElementById('progressLine');
   
-  if (!wrapper || items.length === 0) {
-    requestAnimationFrame(update);
-    return;
-  }
+  if (!wrapper || items.length === 0) return;
 
-  velocity *= friction;
-  targetY += velocity;
-
-  const maxScroll = wrapper.scrollHeight - window.innerHeight;
-  targetY = Math.max(0, Math.min(targetY, maxScroll));
+  const wrapperRect = wrapper.getBoundingClientRect();
+  const wrapperCenter = wrapperRect.top + wrapperRect.height / 2;
   
-  currentY += (targetY - currentY) * lerp;
-  wrapper.style.transform = `translateY(${-currentY}px)`;
-
-  const stepHeight = window.innerHeight;
+  let activeIndex = 0;
+  let minDistance = Infinity;
   
-  // Progress conduit fills as viewport center approaches the last node center
-  const totalSteps = items.length;
-  const progress = (currentY / ((totalSteps - 1) * stepHeight)) * 100;
-  if (progressLine) {
-    progressLine.style.height = `${Math.max(0, Math.min(100, progress))}%`;
-  }
-
-  // Active state logic
-  const activeIndex = Math.round(currentY / stepHeight);
+  items.forEach((item, index) => {
+    const rect = item.getBoundingClientRect();
+    const itemCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(itemCenter - wrapperCenter);
+    
+    if (distance < minDistance) {
+      minDistance = distance;
+      activeIndex = index;
+    }
+  });
+  
   items.forEach((item, index) => {
     if (index === activeIndex) {
       item.classList.add('active');
@@ -386,7 +369,12 @@ function update() {
     }
   });
 
-  requestAnimationFrame(update);
+  const totalSteps = items.length;
+  const maxScroll = (totalSteps - 1) * stepHeight;
+  const progress = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+  if (progressLine) {
+    progressLine.style.height = `${Math.max(0, Math.min(100, progress))}%`;
+  }
 }
 
 // Translations support custom page-specific words

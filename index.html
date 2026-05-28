@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ElectionGuide India - Home</title>
-  
+
   <!-- Tailwind CSS & Custom Config -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -64,36 +65,60 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/darkmode.css">
 </head>
-<body class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 flex flex-col page-enter">
+
+<body
+  class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 flex flex-col page-enter">
 
   <!-- Header -->
-  <nav class="sticky top-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
+  <nav
+    class="sticky top-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2 sm:space-x-3">
-        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo" class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
+        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo"
+          class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
         <div class="border-l border-gray-300 dark:border-gray-600 pl-2 sm:pl-3">
           <div class="flex items-center space-x-1">
-            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight" data-i18n="logo_title">ElectionGuide India</span>
-            <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
+            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight"
+              data-i18n="logo_title">ElectionGuide India</span>
+            <i data-lucide="check-circle"
+              class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
           </div>
-          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your Personal Election Assistant</p>
+          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your
+            Personal Election Assistant</p>
         </div>
       </div>
-      
+
       <!-- Desktop Navigation links -->
-      <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
-        <a href="index.html" class="text-saffron border-b-2 border-saffron pb-1" data-i18n="nav_home">Home</a>
-        <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_dashboard">Dashboard</a>
-        <a href="evm-practice.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_evm">EVM Simulator</a>
-        <a href="more.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_more">More Features</a>
+      <div class="hidden lg:flex items-center">
+        <div class="premium-desktop-nav">
+          <a href="index.html" class="desktop-nav-link active-desktop-nav-link" data-i18n="nav_home">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+          <a href="dashboard.html" class="desktop-nav-link" data-i18n="nav_dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="evm-practice.html" class="desktop-nav-link" data-i18n="nav_evm">
+            <i data-lucide="cpu"></i>
+            <span>EVM Simulator</span>
+          </a>
+          <a href="more.html" class="desktop-nav-link" data-i18n="nav_more">
+            <i data-lucide="grid"></i>
+            <span>More Features</span>
+          </a>
+        </div>
       </div>
 
       <!-- Header Widgets -->
       <div class="flex items-center space-x-3">
         <!-- Translator Dropdown -->
-        <div class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
+        <div
+          class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
           <i data-lucide="languages" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-          <select id="language-select" class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none" aria-label="Translate Language">
+          <select id="language-select"
+            class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none"
+            aria-label="Translate Language">
             <option value="en">English</option>
             <option value="hi">हिंदी</option>
             <option value="ta">தமிழ்</option>
@@ -109,27 +134,36 @@
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
 
     <!-- Hero Card -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-white to-warm_bg/30 dark:from-dark_card dark:to-dark_card/50 rounded-3xl border border-gray-200/50 dark:border-gray-700/50 p-8 md:p-12 shadow-2xl transition-theme">
-      <div class="absolute top-0 right-0 w-48 h-48 bg-saffron/10 dark:bg-saffron/5 rounded-bl-full pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 bg-green_eci/10 dark:bg-green_eci/5 rounded-tr-full pointer-events-none"></div>
-      
+    <section
+      class="relative overflow-hidden bg-gradient-to-br from-white to-warm_bg/30 dark:from-dark_card dark:to-dark_card/50 rounded-3xl border border-gray-200/50 dark:border-gray-700/50 p-8 md:p-12 shadow-2xl transition-theme">
+      <div class="absolute top-0 right-0 w-48 h-48 bg-saffron/10 dark:bg-saffron/5 rounded-bl-full pointer-events-none">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-48 h-48 bg-green_eci/10 dark:bg-green_eci/5 rounded-tr-full pointer-events-none">
+      </div>
+
       <div class="max-w-3xl relative z-10 space-y-4">
-        <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-saffron-light dark:bg-saffron/20 text-saffron-dark dark:text-saffron">
+        <span
+          class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-saffron-light dark:bg-saffron/20 text-saffron-dark dark:text-saffron">
           🇮🇳 ECI Awareness Campaign 2026
         </span>
         <h1 class="text-3xl md:text-5xl font-extrabold text-navy-eci dark:text-white tracking-tight leading-tight">
-          Shape the Future of <span class="bg-gradient-to-r from-saffron to-green_eci bg-clip-text text-transparent">Indian Democracy</span>
+          Shape the Future of <span
+            class="bg-gradient-to-r from-saffron to-green_eci bg-clip-text text-transparent">Indian Democracy</span>
         </h1>
         <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-          Welcome to your central voter education assistant. Get customized, step-by-step assembly timelines, find your voting booth, test the EVM + VVPAT simulator, and explore national voting metrics.
+          Welcome to your central voter education assistant. Get customized, step-by-step assembly timelines, find your
+          voting booth, test the EVM + VVPAT simulator, and explore national voting metrics.
         </p>
-        
+
         <div class="flex flex-wrap gap-4 pt-2">
-          <a href="profile.html" class="px-6 py-3 bg-saffron hover:bg-saffron-hover text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all text-sm flex items-center space-x-2">
+          <a href="profile.html"
+            class="px-6 py-3 bg-saffron hover:bg-saffron-hover text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all text-sm flex items-center space-x-2">
             <i data-lucide="user" class="w-4 h-4"></i>
             <span data-i18n="btn_show_roadmap">Create Voter Profile</span>
           </a>
-          <a href="timeline.html" class="px-6 py-3 bg-navy-eci hover:bg-navy-eci/90 text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all text-sm flex items-center space-x-2">
+          <a href="timeline.html"
+            class="px-6 py-3 bg-navy-eci hover:bg-navy-eci/90 text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all text-sm flex items-center space-x-2">
             <i data-lucide="calendar" class="w-4 h-4"></i>
             <span>Browse Election Phases</span>
           </a>
@@ -138,7 +172,8 @@
     </section>
 
     <!-- Interactive Map Teaser Card -->
-    <section class="bg-white dark:bg-dark_card rounded-3xl p-6 md:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 flex flex-col md:flex-row items-center justify-between gap-6 transition-theme hover:scale-[1.01]">
+    <section
+      class="bg-white dark:bg-dark_card rounded-3xl p-6 md:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 flex flex-col md:flex-row items-center justify-between gap-6 transition-theme hover:scale-[1.01]">
       <div class="space-y-2 max-w-xl">
         <div class="flex items-center space-x-2 text-saffron">
           <i data-lucide="map" class="w-5 h-5"></i>
@@ -146,10 +181,12 @@
         </div>
         <h2 class="text-2xl font-bold text-navy-eci dark:text-white">Interactive India Map & Schedules</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-          Explore our brand-new interactive Raphael.js vector map of India. Hover over states to check local next election schedules, assembly dates, deadlines, and representative turnout indices.
+          Explore our brand-new interactive Raphael.js vector map of India. Hover over states to check local next
+          election schedules, assembly dates, deadlines, and representative turnout indices.
         </p>
       </div>
-      <a href="india-map.html" class="px-6 py-3.5 bg-green_eci hover:bg-green_eci-hover text-white font-extrabold rounded-xl shadow-md active:scale-95 transition-all text-sm flex items-center space-x-2 shrink-0">
+      <a href="india-map.html"
+        class="px-6 py-3.5 bg-green_eci hover:bg-green_eci-hover text-white font-extrabold rounded-xl shadow-md active:scale-95 transition-all text-sm flex items-center space-x-2 shrink-0">
         <span>Open Interactive Map</span>
         <i data-lucide="arrow-right" class="w-4 h-4"></i>
       </a>
@@ -161,19 +198,22 @@
         <h2 class="text-2xl md:text-3xl font-extrabold text-navy-eci dark:text-white flex items-center space-x-2">
           <span>📊 National Election Statistics Dashboard</span>
         </h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Analysis of turnout and gender distribution metrics compiled from recent Indian General Elections.</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Analysis of turnout and gender distribution metrics compiled
+          from recent Indian General Elections.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Chart 1: Turnout by State -->
-        <div class="bg-white dark:bg-dark_card rounded-2xl p-5 shadow-lg border border-gray-200/50 dark:border-gray-700/50 transition-theme hover:scale-[1.01] h-80 flex flex-col justify-between">
+        <div
+          class="bg-white dark:bg-dark_card rounded-2xl p-5 shadow-lg border border-gray-200/50 dark:border-gray-700/50 transition-theme hover:scale-[1.01] h-80 flex flex-col justify-between">
           <div class="h-64">
             <canvas id="turnoutStateChart"></canvas>
           </div>
         </div>
 
         <!-- Chart 2: Turnout by Gender -->
-        <div class="bg-white dark:bg-dark_card rounded-2xl p-5 shadow-lg border border-gray-200/50 dark:border-gray-700/50 transition-theme hover:scale-[1.01] h-80 flex flex-col justify-between">
+        <div
+          class="bg-white dark:bg-dark_card rounded-2xl p-5 shadow-lg border border-gray-200/50 dark:border-gray-700/50 transition-theme hover:scale-[1.01] h-80 flex flex-col justify-between">
           <div class="h-64">
             <canvas id="genderTurnoutChart"></canvas>
           </div>
@@ -183,73 +223,45 @@
 
   </main>
 
-  <!-- Sticky Bottom Navigation Bar on Mobile -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-dark_card/95 border-t border-gray-200 dark:border-gray-800 shadow-lg backdrop-blur-md px-4 py-2 flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center text-saffron transition-all active:scale-95">
-      <i data-lucide="home" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Home</span>
-    </a>
-    <a href="dashboard.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Roadmap</span>
-    </a>
-    <a href="evm-practice.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="vote" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">EVM</span>
-    </a>
-    <a href="more.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">More</span>
-    </a>
-  </div>
-
-  <!-- Floating Action Button (FAB) -->
-  <div class="fixed bottom-6 right-6 z-40 fab-bounce">
-    <button onclick="toggleHelpDrawer()" class="flex items-center justify-center bg-saffron hover:bg-saffron-hover text-white w-14 h-14 rounded-full shadow-2xl active:scale-95 transition-theme" aria-label="Quick Support Center">
-      <i data-lucide="help-circle" class="w-7 h-7"></i>
-    </button>
-  </div>
-
-  <!-- Floating Help Drawer (initially closed) -->
-  <div id="help-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white dark:bg-dark_card border-l border-gray-200 dark:border-gray-800 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-4">
-      <div class="flex items-center space-x-2 text-navy-eci dark:text-saffron">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <h3 class="font-extrabold text-base">Quick Help Drawer</h3>
-      </div>
-      <button onclick="toggleHelpDrawer()" class="p-1 rounded-lg text-gray-400 hover:bg-gray-100 dark:hover:bg-dark_bg">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-    </div>
-    <div class="space-y-4 text-xs">
-      <div class="space-y-1.5">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">ECI Help Desk</span>
-        <a href="tel:1950" class="flex items-center space-x-2 text-saffron font-bold text-sm bg-saffron/10 p-2.5 rounded-lg">
-          <i data-lucide="phone-call" class="w-4 h-4"></i>
-          <span>Voter Helpline: 1950</span>
-        </a>
-      </div>
-      <div class="space-y-1">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Am I Eligible?</span>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          You must be an Indian citizen, at least 18 years old on January 1st of the revision year, and registered in the electoral roll of your polling constituency.
-        </p>
-      </div>
-      <div class="space-y-2 border-t border-gray-100 dark:border-gray-800 pt-3">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Official Voter App</span>
-        <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank" class="flex items-center justify-between bg-navy-eci text-white p-2.5 rounded-lg hover:bg-navy_eci-hover transition-colors font-bold">
-          <div class="flex items-center space-x-2">
-            <i data-lucide="smartphone" class="w-4.5 h-4.5"></i>
-            <span>Voter Helpline Mobile</span>
-          </div>
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
+  <!-- Floating Bottom Navigation Bar on Mobile -->
+  <div class="lg:hidden fixed bottom-5 left-5 right-5 z-[9999] premium-mobile-nav transition-all duration-300">
+    <div class="nav-items-wrapper">
+      <a href="index.html" class="nav-item active-nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="home" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_home">Home</span>
+      </a>
+      <a href="timeline.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="list-todo" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_timeline">Timeline</span>
+      </a>
+      <a href="evm-practice.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="vote" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_evm">EVM</span>
+      </a>
+      <a href="booth-locator.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_booth">Booth</span>
+      </a>
+      <a href="more.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_more">More</span>
+      </a>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
+  <footer
+    class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-8">
         <div class="flex items-center space-x-3">
@@ -263,10 +275,9 @@
 
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
         <p class="max-w-3xl leading-relaxed text-center md:text-left" data-i18n="footer_disclaimer">
-          Disclaimer: This is an independent educational guide. Always refer to the official ECI portal for binding electoral rules.
+          Disclaimer: This project was built for Build with AI 2026 PromptWars. For official and updated election details, refer to the Election Commission of India (ECI) portal.
         </p>
         <div class="text-center md:text-right whitespace-nowrap">
-          <p>Last Updated: May 27, 2026</p>
           <p class="mt-0.5">&copy; 2026 ElectionGuide India.</p>
         </div>
       </div>
@@ -278,13 +289,8 @@
   <script src="js/storage.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/app.js"></script>
-  
-  <script>
-    function toggleHelpDrawer() {
-      const drawer = document.getElementById('help-drawer');
-      drawer.classList.toggle('translate-x-full');
-    }
 
+  <script>
     function shareSocial(platform) {
       const pageUrl = encodeURIComponent(window.location.href);
       const text = encodeURIComponent("Check out ElectionGuide India, your personal assistant to understanding the voting process, practicing on mock EVMs, and tracking election schedules!");
@@ -300,4 +306,5 @@
     }
   </script>
 </body>
+
 </html>

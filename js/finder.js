@@ -6,108 +6,108 @@ const areaData = {
     districts: ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem"],
     constituencies: ["Chennai Central", "Chennai South", "Chennai North", "Coimbatore Parliamentary", "Madurai Parliamentary"],
     officers: [
-      { name: "Mr. K. Srinivasan", phone: "+91 94440 12345" },
-      { name: "Ms. A. Radha", phone: "+91 94440 67890" }
+      { name: "Mr. K. Srinivasan", phone: "+91 xxxxx xxxxx" },
+      { name: "Ms. A. Radha", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Chennai Corp. Primary School (Room 1)", address: "12, Gandhi Salai, T. Nagar, Chennai", distance: "0.4 km" },
-      { name: "St. Joseph's Higher Secondary School", address: "45, Cathedral Road, Gopalapuram, Chennai", distance: "1.1 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.4 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.1 km" }
     ]
   },
   "Karnataka": {
     districts: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi"],
     constituencies: ["Bengaluru South", "Bengaluru North", "Bengaluru Central", "Mysuru Parliamentary", "Hubli-Dharwad Central"],
     officers: [
-      { name: "Mr. R. K. Hegde", phone: "+91 98860 98765" },
-      { name: "Mrs. Shwetha Gowda", phone: "+91 98860 12345" }
+      { name: "Mr. R. K. Hegde", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. Shwetha Gowda", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Govt. Kannada Primary School (Room 2)", address: "5th Cross, Jayanagar 4th Block, Bengaluru", distance: "0.6 km" },
-      { name: "R.V. College of Engineering (Block A)", address: "Mysore Road, Kengeri, Bengaluru", distance: "1.5 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.6 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.5 km" }
     ]
   },
   "Kerala": {
     districts: ["Trivandrum", "Kochi", "Kozhikode", "Thrissur", "Kannur"],
     constituencies: ["Thiruvananthapuram Central", "Ernakulam Parliamentary", "Kozhikode South", "Thrissur Parliamentary", "Kannur North"],
     officers: [
-      { name: "Mr. Manoj Pillai", phone: "+91 94470 54321" },
-      { name: "Mrs. Bindu Nair", phone: "+91 94470 98765" }
+      { name: "Mr. Manoj Pillai", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. Bindu Nair", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Government Model High School (Room 1)", address: "Palayam, Thiruvananthapuram", distance: "0.5 km" },
-      { name: "V.V. Teachers Training College", address: "M.G. Road, Ernakulam, Kochi", distance: "1.3 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.5 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.3 km" }
     ]
   },
   "Maharashtra": {
     districts: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik"],
     constituencies: ["Mumbai South", "Mumbai North-Central", "Pune Parliamentary", "Nagpur Central", "Thane East"],
     officers: [
-      { name: "Mr. Sanjay Deshmukh", phone: "+91 98200 45678" },
-      { name: "Ms. Priya Kulkarni", phone: "+91 98200 12345" }
+      { name: "Mr. Sanjay Deshmukh", phone: "+91 xxxxx xxxxx" },
+      { name: "Ms. Priya Kulkarni", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Municipal School Hall (Room No. 3)", address: "Fort Ward, Near GPO, Mumbai", distance: "0.3 km" },
-      { name: "Gokhale Institute of Politics & Economics", address: "Deccan Gymkhana, Pune", distance: "1.2 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.3 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.2 km" }
     ]
   },
   "Andhra Pradesh": {
     districts: ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Nellore"],
     constituencies: ["Visakhapatnam Parliamentary", "Vijayawada West", "Guntur Parliamentary", "Tirupati Rural", "Nellore City"],
     officers: [
-      { name: "Mr. Srinivasa Rao", phone: "+91 99890 12345" },
-      { name: "Mrs. L. Lakshmi", phone: "+91 99890 67890" }
+      { name: "Mr. Srinivasa Rao", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. L. Lakshmi", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Zilla Parishad High School", address: "Dwarka Nagar, Visakhapatnam", distance: "0.7 km" },
-      { name: "Municipal Corporation Office Hall", address: "M.G. Road, Vijayawada", distance: "1.4 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.7 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.4 km" }
     ]
   },
   "Telangana": {
     districts: ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam"],
     constituencies: ["Secunderabad Parliamentary", "Hyderabad South", "Warangal West", "Nizamabad Urban", "Karimnagar Town"],
     officers: [
-      { name: "Mr. M. A. Reddy", phone: "+91 98480 98765" },
-      { name: "Mrs. G. Sujatha", phone: "+91 98480 12345" }
+      { name: "Mr. M. A. Reddy", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. G. Sujatha", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Government Junior College (Room 4)", address: "Koti, Hyderabad", distance: "0.5 km" },
-      { name: "Nizam College Library Block", address: "Basheerbagh, Hyderabad", distance: "1.0 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.5 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.0 km" }
     ]
   },
   "Gujarat": {
     districts: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
     constituencies: ["Ahmedabad West", "Surat City East", "Vadodara Parliamentary", "Rajkot Rural", "Gandhinagar Parliamentary"],
     officers: [
-      { name: "Mr. Hasmukh Patel", phone: "+91 98980 12345" },
-      { name: "Mrs. Jagruti Mehta", phone: "+91 98980 67890" }
+      { name: "Mr. Hasmukh Patel", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. Jagruti Mehta", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "M.J. Library Meeting Hall", address: "Ashram Road, Ellisbridge, Ahmedabad", distance: "0.8 km" },
-      { name: "Govt. Secondary School Block A", address: "Sector 16, Gandhinagar", distance: "1.6 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.8 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.6 km" }
     ]
   },
   "Rajasthan": {
     districts: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner"],
     constituencies: ["Jaipur City", "Jodhpur Parliamentary", "Udaipur Rural", "Kota South", "Bikaner Town"],
     officers: [
-      { name: "Mr. Ramesh Sharma", phone: "+91 94140 12345" },
-      { name: "Mrs. Sunita Choudhary", phone: "+91 94140 67890" }
+      { name: "Mr. Ramesh Sharma", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. Sunita Choudhary", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Government Primary School Building", address: "C-Scheme, Near Statue Circle, Jaipur", distance: "0.4 km" },
-      { name: "Maharaja College Hall Block B", address: "JLN Marg, Jaipur", distance: "1.1 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.4 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.1 km" }
     ]
   },
   "Delhi": {
     districts: ["New Delhi", "North Delhi", "South Delhi", "East Delhi", "West Delhi"],
     constituencies: ["New Delhi Parliamentary", "Chandni Chowk", "South Delhi Parliamentary", "East Delhi Parliamentary", "West Delhi Parliamentary"],
     officers: [
-      { name: "Mr. Rajeev Kumar", phone: "+91 98110 12345" },
-      { name: "Mrs. Meena Sharma", phone: "+91 98110 67890" }
+      { name: "Mr. Rajeev Kumar", phone: "+91 xxxxx xxxxx" },
+      { name: "Mrs. Meena Sharma", phone: "+91 xxxxx xxxxx" }
     ],
     centers: [
-      { name: "Parliament House Reception Lounge (Room 12)", address: "Sansad Marg, New Delhi - 110001", distance: "0.2 km" },
-      { name: "National Museum Lecture Hall", address: "Janpath, New Delhi - 110011", distance: "0.9 km" }
+      { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.2 km" },
+      { name: "School 2", address: "xxx street , yyy nagar , India", distance: "0.9 km" }
     ]
   }
 };
@@ -117,12 +117,12 @@ const genericFallback = {
   districts: ["Central District", "East District", "North District", "South District"],
   constituencies: ["Constituency Area 1", "Constituency Area 2", "Constituency Area 3"],
   officers: [
-    { name: "Mr. A. K. Singh", phone: "+91 99990 12345" },
-    { name: "Mrs. S. Roy", phone: "+91 99990 67890" }
+    { name: "Mr. A. K. Singh", phone: "+91 xxxxx xxxxx" },
+    { name: "Mrs. S. Roy", phone: "+91 xxxxx xxxxx" }
   ],
   centers: [
-    { name: "Government High School (Room 1)", address: "Main Bazaar Road, Central Town", distance: "0.7 km" },
-    { name: "Panchayat Community Hall Block A", address: "Station Road, Near Tehsil Office", distance: "1.4 km" }
+    { name: "School 1", address: "xxx street , yyy nagar , India", distance: "0.7 km" },
+    { name: "School 2", address: "xxx street , yyy nagar , India", distance: "1.4 km" }
   ]
 };
 
@@ -130,6 +130,53 @@ document.addEventListener('DOMContentLoaded', () => {
   setupStateDropdown();
   setupEventListeners();
   loadSavedProfileArea();
+
+  // Check URL query parameters for easy navigation deep links
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  if (urlParams.get('focus') === 'pincode') {
+    const pincodeEl = document.getElementById('pincode-input');
+    if (pincodeEl) {
+      setTimeout(() => {
+        pincodeEl.focus();
+        pincodeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 400);
+    }
+  }
+  
+  if (urlParams.get('search') === 'true') {
+    setTimeout(() => {
+      const stateSelect = document.getElementById('state-select');
+      const districtSelect = document.getElementById('district-select');
+      const constituencySelect = document.getElementById('constituency-select');
+      const pincodeEl = document.getElementById('pincode-input');
+      
+      if (stateSelect && districtSelect && constituencySelect && pincodeEl) {
+        // If no state is prefilled by loadSavedProfileArea(), pre-fill with Delhi fallback
+        if (!stateSelect.value) {
+          stateSelect.value = "Delhi";
+          updateDistrictAndConstituencyOptions("Delhi");
+          districtSelect.value = "New Delhi";
+          constituencySelect.value = "New Delhi Parliamentary";
+          pincodeEl.value = "110001";
+        } else {
+          // State is loaded from profile, make sure we fill district/constituency/pincode if empty
+          if (!districtSelect.value && districtSelect.options.length > 1) {
+            districtSelect.selectedIndex = 1;
+          }
+          if (!constituencySelect.value && constituencySelect.options.length > 1) {
+            constituencySelect.selectedIndex = 1;
+          }
+          if (!pincodeEl.value) {
+            pincodeEl.value = "110001"; // Generic fallback pincode
+          }
+        }
+        
+        // Trigger search automatically
+        searchPollingInfo();
+      }
+    }, 500);
+  }
 });
 
 function setupStateDropdown() {
@@ -276,8 +323,8 @@ function renderPollingResults(pincode, state, district, constituency) {
   if (!resultsContainer) return;
   
   const data = areaData[state] || genericFallback;
-  const blo = data.officers[0] || { name: "Mr. Raj Kumar", phone: "+91 99990 12345" };
-  const ero = data.officers[1] || { name: "Mrs. A. Sen", phone: "+91 99990 67890" };
+  const blo = data.officers[0] || { name: "Mr. Raj Kumar", phone: "+91 xxxxx xxxxx" };
+  const ero = data.officers[1] || { name: "Mrs. A. Sen", phone: "+91 xxxxx xxxxx" };
   
   // Mocking current queue states
   const randomQueueNum = Math.floor(Math.random() * 3); // 0: low, 1: medium, 2: high

@@ -1,6 +1,6 @@
 // Dark/Light Mode Manager for ElectionGuide India
 
-(function() {
+(function () {
   // Apply theme immediately to prevent light-flash
   const storedTheme = localStorage.getItem('theme') || 'light';
   if (storedTheme === 'dark') {
@@ -13,6 +13,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   updateThemeIcons();
   setupLanguageSelector();
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 });
 
 // Switch theme logic
@@ -20,16 +23,16 @@ function toggleDarkMode() {
   const html = document.documentElement;
   const isDark = html.classList.toggle('dark');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  
+
   updateThemeIcons();
-  
+
   // Custom event so specific pages (like dashboard chart) can listen and redraw
   window.dispatchEvent(new Event('themeChanged'));
-  
+
   if (typeof showToast === 'function') {
     const activeLang = localStorage.getItem('voterLang') || 'en';
-    const text = isDark ? 
-      (activeLang === 'hi' ? "डार्क मोड सक्रिय" : "Dark Mode Activated") : 
+    const text = isDark ?
+      (activeLang === 'hi' ? "डार्क मोड सक्रिय" : "Dark Mode Activated") :
       (activeLang === 'hi' ? "लाइट मोड सक्रिय" : "Light Mode Activated");
     showToast(text, 'info');
   }
@@ -40,13 +43,13 @@ function updateThemeIcons() {
   const headerLogo = document.getElementById('header-logo');
   const footerLogo = document.getElementById('footer-logo');
   const themeInput = document.getElementById('input');
-  
+
   const isDark = document.documentElement.classList.contains('dark');
-  
+
   if (themeInput) {
     themeInput.checked = isDark;
   }
-  
+
   // Swapping logos based on theme
   if (headerLogo) {
     headerLogo.src = isDark ? 'eci-logo-white.svg' : 'eci-logo-white.png';
@@ -61,27 +64,30 @@ function setupLanguageSelector() {
   // Find language dropdown
   const langSelect = document.getElementById('language-select');
   if (!langSelect) return;
-  
+
   // Load saved language
   const savedLang = storage.getLanguage();
   langSelect.value = savedLang;
-  
+
   // Setup Google Translate
   initGoogleTranslateWidget();
-  
+
   // Translate on load
   translatePageElements(savedLang);
-  
+
   // Listen for changes
   langSelect.addEventListener('change', (e) => {
     const lang = e.target.value;
     storage.saveLanguage(lang);
     translatePageElements(lang);
     syncGoogleTranslate(lang);
-    
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
     // Custom event to update page-specific texts
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
-    
+
     if (typeof showToast === 'function') {
       const msgs = {
         en: "Language changed to English",
@@ -95,17 +101,35 @@ function setupLanguageSelector() {
   });
 }
 
-// Translates DOM elements with data-i18n attributes
+// Translates DOM elements with data-i18n attributes safely preserving icons and children
 function translatePageElements(lang) {
   const transDict = electionData.translations[lang] || electionData.translations.en;
-  
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (transDict[key]) {
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.setAttribute('placeholder', transDict[key]);
       } else {
-        el.innerText = transDict[key];
+        // Safe translation: only replace text nodes to preserve nested icons (like Lucide <i> tags)
+        let hasTextNode = false;
+        for (let child of el.childNodes) {
+          if (child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== '') {
+            child.textContent = transDict[key];
+            hasTextNode = true;
+            break;
+          }
+        }
+        // If there was no direct text node (e.g. whitespace only), try to translate a nested span if present
+        if (!hasTextNode) {
+          const spanText = el.querySelector('span');
+          if (spanText) {
+            spanText.innerText = transDict[key];
+          } else {
+            // Fallback for simple elements with no children
+            el.innerText = transDict[key];
+          }
+        }
       }
     }
   });
@@ -122,7 +146,7 @@ function initGoogleTranslateWidget() {
   }
 
   // Setup global callback
-  window.googleTranslateElementInit = function() {
+  window.googleTranslateElementInit = function () {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
       includedLanguages: 'en,hi,ta,ml,kn',
@@ -156,7 +180,7 @@ function syncGoogleTranslate(lang) {
   // Delete cookie to clear previous state
   document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
-  
+
   if (lang !== 'en') {
     const cookieVal = `/en/${lang}`;
     document.cookie = `googtrans=${cookieVal}; path=/;`;

@@ -378,10 +378,30 @@ function createConfettiConf() {
 function drawFingerInkAnim() {
   const container = document.getElementById('ink-finger-container');
   const inkMark = document.getElementById('ink-mark');
+  const inkShimmer = document.getElementById('ink-shimmer');
   
   if (!container || !inkMark) return;
   
   container.classList.remove('hidden');
-  inkMark.classList.remove('hidden');
-  inkMark.classList.add('ink-draw-fill');
+  
+  // Reset elements and classes
+  inkMark.classList.add('hidden');
+  inkMark.classList.remove('ink-paint-active');
+  if (inkShimmer) {
+    inkShimmer.classList.add('hidden');
+    inkShimmer.classList.remove('ink-shimmer-active');
+  }
+  
+  // Trigger SVG stroke-dashoffset animations after brief paint render delay
+  setTimeout(() => {
+    inkMark.classList.remove('hidden');
+    inkMark.classList.add('ink-paint-active');
+    
+    if (inkShimmer) {
+      setTimeout(() => {
+        inkShimmer.classList.remove('hidden');
+        inkShimmer.classList.add('ink-shimmer-active');
+      }, 200);
+    }
+  }, 100);
 }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ElectionGuide India - Journey Timeline</title>
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -61,206 +62,373 @@
   <link rel="stylesheet" href="css/darkmode.css">
   <style>
     :root {
-        --blaze: #FF9933; /* Indian Election Saffron */
-        --blaze-glow: rgba(255, 153, 51, 0.4);
-        --radius: 20px;
-        
-        /* Light Mode Default values */
-        --void-bg: #FFF9F0; 
-        --card-scale: 0.9;
-        --conduit-color: rgba(0, 0, 128, 0.08); /* Navy hint */
-        --bezel-bg: linear-gradient(145deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
-        --bezel-border: rgba(0, 0, 0, 0.08);
-        --bezel-shadow: 0 20px 40px rgba(0,0,0,0.06), inset 0 1px 3px rgba(255,255,255,0.9);
-        --card-bg: #ffffff;
-        --card-border: rgba(0, 0, 0, 0.05);
-        --text-title: #000080;
-        --text-body: #334155;
-        --node-border: #94a3b8;
-        --node-bg: #f8fafc;
-        --label-color: #64748b;
-        --active-card-bg: radial-gradient(circle at top left, rgba(255, 153, 51, 0.08) 0%, #ffffff 80%);
-        --active-bezel-border: rgba(255, 153, 51, 0.4);
+      --blaze: #FF9933;
+      /* Indian Election Saffron */
+      --blaze-glow: rgba(255, 153, 51, 0.4);
+      --radius: 20px;
+
+      /* Light Mode Default values */
+      --void-bg: #FFF9F0;
+      --card-scale: 0.9;
+      --conduit-color: rgba(0, 0, 128, 0.08);
+      /* Navy hint */
+      --bezel-bg: linear-gradient(145deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+      --bezel-border: rgba(0, 0, 0, 0.08);
+      --bezel-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 3px rgba(255, 255, 255, 0.9);
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.05);
+      --text-title: #000080;
+      --text-body: #334155;
+      --node-border: #94a3b8;
+      --node-bg: #f8fafc;
+      --label-color: #64748b;
+      --active-card-bg: radial-gradient(circle at top left, rgba(255, 153, 51, 0.08) 0%, #ffffff 80%);
+      --active-bezel-border: rgba(255, 153, 51, 0.4);
     }
 
     html.dark {
-        /* Dark Mode overrides */
-        --void-bg: #0d0d1a;
-        --conduit-color: rgba(255, 255, 255, 0.06);
-        --bezel-bg: linear-gradient(145deg, #2a2a3e 0%, #151525 45%, #05050f 100%);
-        --bezel-border: rgba(255, 255, 255, 0.05);
-        --bezel-shadow: 0 25px 50px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255, 255, 255, 0.15);
-        --card-bg: #090915;
-        --card-border: rgba(255, 255, 255, 0.02);
-        --text-title: #ffffff;
-        --text-body: #94a3b8;
-        --node-border: #334155;
-        --node-bg: #02020a;
-        --label-color: #475569;
-        --active-card-bg: radial-gradient(circle at top left, rgba(255, 153, 51, 0.07) 0%, #090915 70%);
-        --active-bezel-border: rgba(255, 153, 51, 0.3);
+      /* Dark Mode overrides */
+      --void-bg: #0d0d1a;
+      --conduit-color: rgba(255, 255, 255, 0.06);
+      --bezel-bg: linear-gradient(145deg, #2a2a3e 0%, #151525 45%, #05050f 100%);
+      --bezel-border: rgba(255, 255, 255, 0.05);
+      --bezel-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+      --card-bg: #090915;
+      --card-border: rgba(255, 255, 255, 0.02);
+      --text-title: #ffffff;
+      --text-body: #94a3b8;
+      --node-border: #334155;
+      --node-bg: #02020a;
+      --label-color: #475569;
+      --active-card-bg: radial-gradient(circle at top left, rgba(255, 153, 51, 0.07) 0%, #090915 70%);
+      --active-bezel-border: rgba(255, 153, 51, 0.3);
     }
 
     body {
-        margin: 0; background: var(--void-bg); font-family: 'Outfit', sans-serif;
-        overflow: hidden; height: 100vh; color: var(--text-title);
-        transition: background-color 300ms ease, color 300ms ease;
+      margin: 0;
+      background: var(--void-bg);
+      font-family: 'Outfit', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      color: var(--text-title);
+      transition: background-color 300ms ease, color 300ms ease;
     }
 
-    #scroll-wrapper { position: fixed; top: 0; left: 0; width: 100%; will-change: transform; pointer-events: auto; }
+    #scroll-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      pointer-events: auto;
+    }
 
-    .timeline-track { position: relative; width: 100%; min-height: 100vh; padding-top: 80px; }
+    .timeline-track {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
 
     .step-unit {
-        height: 100vh; width: 100%; display: flex; 
-        align-items: center; justify-content: center; position: relative;
-        box-sizing: border-box;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    footer {
+      scroll-snap-align: end;
     }
 
     /* THE COMET LINE */
     .glass-conduit {
-        position: absolute; left: 50%; transform: translateX(-50%);
-        width: 2px; top: 50vh; bottom: 50vh; background: var(--conduit-color);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      top: 50vh;
+      bottom: 50vh;
+      background: var(--conduit-color);
     }
 
     .comet-fill {
-        position: absolute; top: 0; width: 100%; height: 0%;
-        background: linear-gradient(to bottom, transparent, var(--blaze) 85%, #fff);
-        box-shadow: 0 0 20px var(--blaze);
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, transparent, var(--blaze) 85%, #fff);
+      box-shadow: 0 0 20px var(--blaze);
     }
 
     .comet-spark {
-        position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-        width: 4px; height: 60px; background: #fff;
-        box-shadow: 0 0 20px #fff, 0 0 40px var(--blaze); filter: blur(1px);
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 60px;
+      background: #fff;
+      box-shadow: 0 0 20px #fff, 0 0 40px var(--blaze);
+      filter: blur(1px);
     }
 
     /* THE 3D BEZEL CARD */
     .glass-card {
-        position: relative; width: 460px; max-width: 90%;
-        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-        opacity: 0.12; transform: scale(0.9);
-        pointer-events: auto;
+      position: relative;
+      width: 460px;
+      max-width: 90%;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+      opacity: 0.12;
+      transform: scale(0.9);
+      pointer-events: auto;
     }
 
     .bezel-shroud {
-        padding: 8px; /* Noticeable Thickness */
-        background: var(--bezel-bg);
-        border-radius: var(--radius);
-        box-shadow: var(--bezel-shadow);
-        border: 1px solid var(--bezel-border);
-        transition: border-color 0.6s ease, box-shadow 0.6s ease;
+      padding: 8px;
+      /* Noticeable Thickness */
+      background: var(--bezel-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--bezel-shadow);
+      border: 1px solid var(--bezel-border);
+      transition: border-color 0.6s ease, box-shadow 0.6s ease;
     }
 
     .content {
-        padding: 24px; /* Requirement: 24px padding each side */
-        display: flex; flex-direction: column; 
-        gap: 16px; /* 16px vertical gap for text + checklists */
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: calc(var(--radius) - 6px);
-        position: relative; overflow: hidden;
-        transition: background 0.6s ease, border-color 0.6s ease;
+      padding: 16px;
+      /* Responsive: 16px padding on mobile */
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      /* 12px vertical gap on mobile */
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: calc(var(--radius) - 6px);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.6s ease, border-color 0.6s ease;
+    }
+
+    @media (min-width: 640px) {
+      .content {
+        padding: 24px;
+        /* 24px padding on desktop */
+        gap: 16px;
+      }
     }
 
     /* SPOTLIGHT & BORDER HIGHLIGHT */
-    .timeline-item.active .glass-card { opacity: 1; transform: scale(1); }
+    .timeline-item.active .glass-card {
+      opacity: 1;
+      transform: scale(1);
+    }
 
     .timeline-item.active .bezel-shroud {
-        border-color: var(--active-bezel-border); /* Subtle highlighted border */
-        box-shadow: var(--bezel-shadow), 0 0 25px var(--blaze-glow);
+      border-color: var(--active-bezel-border);
+      /* Subtle highlighted border */
+      box-shadow: var(--bezel-shadow), 0 0 25px var(--blaze-glow);
     }
 
     .timeline-item.active .content {
-        background: var(--active-card-bg);
-        box-shadow: inset 0 0 30px rgba(255, 153, 51, 0.03);
+      background: var(--active-card-bg);
+      box-shadow: inset 0 0 30px rgba(255, 153, 51, 0.03);
     }
 
     /* TYPOGRAPHY REQUIREMENTS */
-    .content h3 { 
-        font-size: 20px; line-height: 28px; /* Requirement: 20px/28px */
-        margin: 0; font-weight: 700; color: var(--text-title); 
+    .content h3 {
+      font-size: 20px;
+      line-height: 28px;
+      /* Requirement: 20px/28px */
+      margin: 0;
+      font-weight: 700;
+      color: var(--text-title);
     }
-    .content p { 
-        font-size: 14px; line-height: 20px; /* Requirement: 14px/20px */
-        margin: 0; color: var(--text-secondary); 
+
+    .content p {
+      font-size: 14px;
+      line-height: 20px;
+      /* Requirement: 14px/20px */
+      margin: 0;
+      color: var(--text-secondary);
     }
 
     /* NODES & DYNAMIC PULSE */
-    .node-wrapper { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 40; }
+    .node-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 40;
+    }
+
     .glass-sphere {
-        width: 14px; height: 14px; background: var(--node-bg); border: 2px solid var(--node-border); border-radius: 50%;
-        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 14px;
+      height: 14px;
+      background: var(--node-bg);
+      border: 2px solid var(--node-border);
+      border-radius: 50%;
+      transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .timeline-item.active .glass-sphere {
-        background: #fff; transform: scale(1.6); border-color: var(--blaze);
-        box-shadow: 0 0 20px var(--blaze);
+      background: #fff;
+      transform: scale(1.6);
+      border-color: var(--blaze);
+      box-shadow: 0 0 20px var(--blaze);
     }
+
     .timeline-item.active .glass-sphere::after {
-        content: ''; position: absolute; inset: -10px; border-radius: 50%;
-        border: 2px solid var(--blaze); animation: nodePulse 2s infinite;
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid var(--blaze);
+      animation: nodePulse 2s infinite;
     }
 
     @keyframes nodePulse {
-        0% { transform: scale(1); opacity: 1; }
-        100% { transform: scale(3.5); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(3.5);
+        opacity: 0;
+      }
     }
 
     /* ALTERNATING LAYOUT & SPACING */
-    .timeline-item:nth-child(even) .glass-card { transform: translateX(-370px) scale(0.9); }
-    .timeline-item:nth-child(odd) .glass-card { transform: translateX(370px) scale(0.9); }
-    .timeline-item.active:nth-child(even) .glass-card { transform: translateX(-370px) scale(1); }
-    .timeline-item.active:nth-child(odd) .glass-card { transform: translateX(370px) scale(1); }
+    .timeline-item:nth-child(even) .glass-card {
+      transform: translateX(-370px) scale(0.9);
+    }
 
-    .status-label { letter-spacing: 10px; color: var(--label-color); font-weight: 900; font-size: 12px; text-transform: uppercase; text-align: center; }
+    .timeline-item:nth-child(odd) .glass-card {
+      transform: translateX(370px) scale(0.9);
+    }
+
+    .timeline-item.active:nth-child(even) .glass-card {
+      transform: translateX(-370px) scale(1);
+    }
+
+    .timeline-item.active:nth-child(odd) .glass-card {
+      transform: translateX(370px) scale(1);
+    }
+
+    .status-label {
+      letter-spacing: 10px;
+      color: var(--label-color);
+      font-weight: 900;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
     /* MOBILE SYNC & ALIGNMENT */
     @media (max-width: 1024px) {
-        .glass-conduit, .node-wrapper { left: 40px; transform: none; }
-        .node-wrapper { transform: translateY(-50%); }
-        .timeline-item .glass-card { 
-            width: calc(100vw - 110px); margin-left: 80px; /* Spacing ensures no node overlap */
-            transform: scale(0.9) !important; 
-        }
-        .timeline-item.active .glass-card { transform: scale(1) !important; }
-        
-        .timeline-item:nth-child(even) .glass-card { transform: scale(0.9) !important; }
-        .timeline-item:nth-child(odd) .glass-card { transform: scale(0.9) !important; }
-        .timeline-item.active:nth-child(even) .glass-card { transform: scale(1) !important; }
-        .timeline-item.active:nth-child(odd) .glass-card { transform: scale(1) !important; }
+
+      .glass-conduit,
+      .node-wrapper {
+        left: 40px;
+        transform: none;
+      }
+
+      .node-wrapper {
+        transform: translateY(-50%);
+      }
+
+      .timeline-item .glass-card {
+        width: calc(100vw - 110px);
+        margin-left: 80px;
+        /* Spacing ensures no node overlap */
+        transform: scale(0.9) !important;
+      }
+
+      .timeline-item.active .glass-card {
+        transform: scale(1) !important;
+      }
+
+      .timeline-item:nth-child(even) .glass-card {
+        transform: scale(0.9) !important;
+      }
+
+      .timeline-item:nth-child(odd) .glass-card {
+        transform: scale(0.9) !important;
+      }
+
+      .timeline-item.active:nth-child(even) .glass-card {
+        transform: scale(1) !important;
+      }
+
+      .timeline-item.active:nth-child(odd) .glass-card {
+        transform: scale(1) !important;
+      }
     }
   </style>
 </head>
-<body class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 page-enter select-none overflow-hidden h-screen">
+
+<body
+  class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 page-enter select-none overflow-hidden h-screen">
 
   <!-- Header (Fixed) -->
-  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
+  <nav
+    class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2 sm:space-x-3">
-        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo" class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
+        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo"
+          class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
         <div class="border-l border-gray-300 dark:border-gray-600 pl-2 sm:pl-3">
           <div class="flex items-center space-x-1">
-            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight" data-i18n="logo_title">ElectionGuide India</span>
-            <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
+            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight"
+              data-i18n="logo_title">ElectionGuide India</span>
+            <i data-lucide="check-circle"
+              class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
           </div>
-          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your Personal Election Assistant</p>
+          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your
+            Personal Election Assistant</p>
         </div>
       </div>
-      
+
       <!-- Desktop Nav links -->
-      <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
-        <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_home">Home</a>
-        <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_dashboard">Dashboard</a>
-        <a href="evm-practice.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_evm">EVM Simulator</a>
-        <a href="more.html" class="text-saffron border-b-2 border-saffron pb-1" data-i18n="nav_more">More Features</a>
+      <div class="hidden lg:flex items-center">
+        <div class="premium-desktop-nav">
+          <a href="index.html" class="desktop-nav-link" data-i18n="nav_home">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+          <a href="dashboard.html" class="desktop-nav-link" data-i18n="nav_dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="evm-practice.html" class="desktop-nav-link" data-i18n="nav_evm">
+            <i data-lucide="cpu"></i>
+            <span>EVM Simulator</span>
+          </a>
+          <a href="more.html" class="desktop-nav-link active-desktop-nav-link" data-i18n="nav_more">
+            <i data-lucide="grid"></i>
+            <span>More Features</span>
+          </a>
+        </div>
       </div>
 
       <!-- Widgets -->
       <div class="flex items-center space-x-3">
         <!-- Translator Dropdown -->
-        <div class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
+        <div
+          class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
           <i data-lucide="languages" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-          <select id="language-select" class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none" aria-label="Translate Language">
+          <select id="language-select"
+            class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none"
+            aria-label="Translate Language">
             <option value="en">English</option>
             <option value="hi">हिंदी</option>
             <option value="ta">தமிழ்</option>
@@ -281,7 +449,8 @@
     </div>
 
     <!-- Footer inside scroll-wrapper to move with vertical inertia -->
-    <footer class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
+    <footer
+      class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-8">
           <div class="flex items-center space-x-3">
@@ -295,10 +464,9 @@
 
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p class="max-w-3xl leading-relaxed text-center md:text-left" data-i18n="footer_disclaimer">
-            Disclaimer: This is an independent educational guide. Always refer to the official ECI portal for binding electoral rules.
+            Disclaimer: This project was built for Build with AI 2026 PromptWars. For official and updated election details, refer to the Election Commission of India (ECI) portal.
           </p>
           <div class="text-center md:text-right whitespace-nowrap">
-            <p>Last Updated: May 27, 2026</p>
             <p class="mt-0.5">&copy; 2026 ElectionGuide India.</p>
           </div>
         </div>
@@ -306,68 +474,39 @@
     </footer>
   </div>
 
-  <!-- Sticky Bottom Navigation Bar on Mobile (Fixed) -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-dark_card/95 border-t border-gray-200 dark:border-gray-800 shadow-lg backdrop-blur-md px-4 py-2 flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="home" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Home</span>
-    </a>
-    <a href="dashboard.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Roadmap</span>
-    </a>
-    <a href="evm-practice.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="vote" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">EVM</span>
-    </a>
-    <a href="more.html" class="flex flex-col items-center text-saffron transition-all active:scale-95">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">More</span>
-    </a>
-  </div>
-
-  <!-- Floating Helper FAB (Fixed) -->
-  <div class="fixed bottom-6 right-6 z-40 fab-bounce">
-    <button onclick="toggleHelpDrawer()" class="flex items-center justify-center bg-saffron hover:bg-saffron-hover text-white w-14 h-14 rounded-full shadow-2xl active:scale-95 transition-theme" aria-label="Support Center">
-      <i data-lucide="help-circle" class="w-7 h-7"></i>
-    </button>
-  </div>
-
-  <!-- Floating Help Drawer (Fixed) -->
-  <div id="help-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white dark:bg-dark_card border-l border-gray-200 dark:border-gray-800 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-4">
-      <div class="flex items-center space-x-2 text-navy-eci dark:text-saffron">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <h3 class="font-extrabold text-base">Quick Help Drawer</h3>
-      </div>
-      <button onclick="toggleHelpDrawer()" class="p-1 rounded-lg text-gray-400 hover:bg-gray-100 dark:hover:bg-dark_bg">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-    </div>
-    <div class="space-y-4 text-xs">
-      <div class="space-y-1.5">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">ECI Help Desk</span>
-        <a href="tel:1950" class="flex items-center space-x-2 text-saffron font-bold text-sm bg-saffron/10 p-2.5 rounded-lg">
-          <i data-lucide="phone-call" class="w-4 h-4"></i>
-          <span>Voter Helpline: 1950</span>
-        </a>
-      </div>
-      <div class="space-y-1">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Am I Eligible?</span>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          You must be an Indian citizen, at least 18 years old on January 1st of the revision year, and registered in the electoral roll of your polling constituency.
-        </p>
-      </div>
-      <div class="space-y-2 border-t border-gray-100 dark:border-gray-800 pt-3">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Official Voter App</span>
-        <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank" class="flex items-center justify-between bg-navy-eci text-white p-2.5 rounded-lg hover:bg-navy_eci-hover transition-colors font-bold">
-          <div class="flex items-center space-x-2">
-            <i data-lucide="smartphone" class="w-4.5 h-4.5"></i>
-            <span>Voter Helpline Mobile</span>
-          </div>
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
+  <!-- Floating Bottom Navigation Bar on Mobile -->
+  <div class="lg:hidden fixed bottom-5 left-5 right-5 z-[9999] premium-mobile-nav transition-all duration-300">
+    <div class="nav-items-wrapper">
+      <a href="index.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="home" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_home">Home</span>
+      </a>
+      <a href="timeline.html" class="nav-item active-nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="list-todo" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_timeline">Timeline</span>
+      </a>
+      <a href="evm-practice.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="vote" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_evm">EVM</span>
+      </a>
+      <a href="booth-locator.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_booth">Booth</span>
+      </a>
+      <a href="more.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_more">More</span>
+      </a>
     </div>
   </div>
 
@@ -379,7 +518,7 @@
   <script src="js/storage.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/timeline.js"></script>
-  
+
   <script>
     // Inline Toast Helper
     function showToast(message, type = 'info') {
@@ -390,7 +529,7 @@
       if (type === 'success') { bg = 'bg-green_eci'; icon = 'check-circle'; }
       if (type === 'error') { bg = 'bg-red-600'; icon = 'alert-triangle'; }
       if (type === 'warning') { bg = 'bg-saffron'; icon = 'bell'; }
-      
+
       toast.className = `flex items-center space-x-3 text-white px-5 py-3.5 rounded-xl shadow-lg transform transition-all duration-300 translate-y-2 opacity-0 max-w-sm ${bg}`;
       toast.innerHTML = `
         <i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i>
@@ -403,11 +542,6 @@
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => { toastContainer.removeChild(toast); }, 300);
       }, 4000);
-    }
-
-    function toggleHelpDrawer() {
-      const drawer = document.getElementById('help-drawer');
-      drawer.classList.toggle('translate-x-full');
     }
 
     function shareSocial(platform) {
@@ -423,4 +557,5 @@
     }
   </script>
 </body>
+
 </html>

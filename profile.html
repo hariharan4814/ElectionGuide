@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ElectionGuide India - Voter Profile</title>
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -60,36 +61,60 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/darkmode.css">
 </head>
-<body class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 flex flex-col page-enter">
+
+<body
+  class="bg-gradient-to-tr from-[#FFF9F0] via-[#FFFDF9] to-[#FFF9F0] dark:bg-gradient-to-tr dark:from-[#1a1a2e] dark:via-[#16213e] dark:to-[#1a1a2e] text-[#1F2937] dark:text-dark_text min-h-screen transition-colors duration-300 flex flex-col page-enter">
 
   <!-- Header -->
-  <nav class="sticky top-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
+  <nav
+    class="sticky top-0 z-50 bg-white/80 dark:bg-dark_card/85 backdrop-blur-md border-b-4 border-navy-eci dark:border-saffron shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2 sm:space-x-3">
-        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo" class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
+        <img id="header-logo" src="eci-logo-white.png" alt="ECI Logo"
+          class="h-9 sm:h-12 w-auto transition-transform hover:scale-105 duration-200">
         <div class="border-l border-gray-300 dark:border-gray-600 pl-2 sm:pl-3">
           <div class="flex items-center space-x-1">
-            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight" data-i18n="logo_title">ElectionGuide India</span>
-            <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
+            <span class="text-sm sm:text-xl font-bold text-navy-eci dark:text-saffron tracking-tight"
+              data-i18n="logo_title">ElectionGuide India</span>
+            <i data-lucide="check-circle"
+              class="w-4 h-4 sm:w-5 sm:h-5 text-green_eci fill-green-100 dark:fill-transparent"></i>
           </div>
-          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your Personal Election Assistant</p>
+          <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 font-medium" data-i18n="logo_tagline">Your
+            Personal Election Assistant</p>
         </div>
       </div>
-      
+
       <!-- Desktop Nav links -->
-      <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
-        <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_home">Home</a>
-        <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_dashboard">Dashboard</a>
-        <a href="evm-practice.html" class="text-gray-600 dark:text-gray-300 hover:text-saffron transition-colors" data-i18n="nav_evm">EVM Simulator</a>
-        <a href="more.html" class="text-saffron border-b-2 border-saffron pb-1" data-i18n="nav_more">More Features</a>
+      <div class="hidden lg:flex items-center">
+        <div class="premium-desktop-nav">
+          <a href="index.html" class="desktop-nav-link" data-i18n="nav_home">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+          <a href="dashboard.html" class="desktop-nav-link" data-i18n="nav_dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="evm-practice.html" class="desktop-nav-link" data-i18n="nav_evm">
+            <i data-lucide="cpu"></i>
+            <span>EVM Simulator</span>
+          </a>
+          <a href="more.html" class="desktop-nav-link active-desktop-nav-link" data-i18n="nav_more">
+            <i data-lucide="grid"></i>
+            <span>More Features</span>
+          </a>
+        </div>
       </div>
 
       <!-- Widgets -->
       <div class="flex items-center space-x-3">
         <!-- Translator Dropdown -->
-        <div class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
+        <div
+          class="relative flex items-center space-x-1 bg-gray-50 dark:bg-dark_bg border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-lg">
           <i data-lucide="languages" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-          <select id="language-select" class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none" aria-label="Translate Language">
+          <select id="language-select"
+            class="bg-transparent text-xs font-semibold text-gray-800 dark:text-white cursor-pointer focus:outline-none"
+            aria-label="Translate Language">
             <option value="en">English</option>
             <option value="hi">हिंदी</option>
             <option value="ta">தமிழ்</option>
@@ -105,32 +130,38 @@
 
   <!-- Main Container -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-    
+
     <div>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navy-eci dark:text-white" data-i18n="nav_profile">My Voter Profile</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400">Update your profile parameters and review your interactive virtual ECI Voter Card preview.</p>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy-eci dark:text-white" data-i18n="nav_profile">My Voter
+        Profile</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Update your profile parameters and review your interactive
+        virtual ECI Voter Card preview.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      
+
       <!-- Profile Form (Left Column) -->
-      <div class="bg-white dark:bg-dark_card glass-card p-6 rounded-3xl shadow-xl border border-gray-200/50 dark:border-gray-700/80">
-        <h3 class="font-extrabold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wider mb-6 flex items-center space-x-1.5">
+      <div
+        class="bg-white dark:bg-dark_card glass-card p-6 rounded-3xl shadow-xl border border-gray-200/50 dark:border-gray-700/80">
+        <h3
+          class="font-extrabold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wider mb-6 flex items-center space-x-1.5">
           <i data-lucide="user-cog" class="w-4 h-4 text-saffron"></i>
           <span>Setup Credentials</span>
         </h3>
-        
+
         <form id="profile-form" onsubmit="submitProfileForm(event)" class="space-y-5 text-sm">
           <!-- Full Name -->
           <div class="space-y-2">
             <label for="profile-name" class="block text-xs font-bold text-gray-500">Citizen Full Name</label>
-            <input type="text" id="profile-name" placeholder="Enter your full name" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron" />
+            <input type="text" id="profile-name" placeholder="Enter your full name" required
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron" />
           </div>
 
           <!-- Age select -->
           <div class="space-y-2">
             <label for="profile-age" class="block text-xs font-bold text-gray-500">Age Qualification</label>
-            <select id="profile-age" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
+            <select id="profile-age" required
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
               <option value="" disabled selected>Select age range...</option>
               <option value="under-18">Under 18 Years (Not Eligible)</option>
               <option value="18-25">18 - 25 Years</option>
@@ -140,8 +171,10 @@
 
           <!-- Voter ID status -->
           <div class="space-y-2">
-            <label for="profile-voter-id" class="block text-xs font-bold text-gray-500">Voter ID (EPIC Card) Status</label>
-            <select id="profile-voter-id" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
+            <label for="profile-voter-id" class="block text-xs font-bold text-gray-500">Voter ID (EPIC Card)
+              Status</label>
+            <select id="profile-voter-id" required
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
               <option value="" disabled selected>Select Voter ID status...</option>
               <option value="have">I have my Voter ID card</option>
               <option value="applied">I've applied / in progress</option>
@@ -152,12 +185,14 @@
           <!-- State dropdown -->
           <div class="space-y-2">
             <label for="profile-state" class="block text-xs font-bold text-gray-500">State / Union Territory</label>
-            <select id="profile-state" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
+            <select id="profile-state" required
+              class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark_bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-saffron focus:border-saffron cursor-pointer appearance-none">
               <option value="" disabled selected>Select State or UT...</option>
             </select>
           </div>
 
-          <button type="submit" class="w-full py-3 bg-saffron hover:bg-saffron-hover text-white font-extrabold rounded-xl transition-all shadow-md active:scale-95 text-xs uppercase tracking-wide flex items-center justify-center space-x-1.5">
+          <button type="submit"
+            class="w-full py-3 bg-saffron hover:bg-saffron-hover text-white font-extrabold rounded-xl transition-all shadow-md active:scale-95 text-xs uppercase tracking-wide flex items-center justify-center space-x-1.5">
             <i data-lucide="save" class="w-4 h-4"></i>
             <span>Save Profile & View Dashboard</span>
           </button>
@@ -166,32 +201,38 @@
 
       <!-- Voter ID Preview (Right Column) -->
       <div class="space-y-6">
-        
+
         <!-- Virtual Mock Voter ID Card Card -->
-        <div class="bg-gradient-to-br from-saffron/15 via-white to-green_eci/15 dark:from-saffron/5 dark:via-dark_card dark:to-green_eci/5 p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/60 shadow-xl flex flex-col justify-between max-w-sm mx-auto relative overflow-hidden h-[240px]">
+        <div
+          class="bg-gradient-to-br from-saffron/15 via-white to-green_eci/15 dark:from-saffron/5 dark:via-dark_card dark:to-green_eci/5 p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/60 shadow-xl flex flex-col justify-between max-w-sm mx-auto relative overflow-hidden h-[240px]">
           <div class="absolute inset-x-0 top-0 h-1 bg-saffron"></div>
           <div class="absolute inset-x-0 bottom-0 h-1 bg-green_eci"></div>
-          
+
           <!-- Mock Card Header -->
           <div class="flex justify-between items-center border-b border-gray-200/50 dark:border-gray-700/50 pb-2">
             <div class="flex items-center space-x-1.5">
               <img src="eci-logo-white.svg" alt="ECI Small Logo" class="h-6 w-auto">
-              <span class="text-[9px] font-black text-navy-eci dark:text-saffron tracking-wider">ELECTION COMMISSION OF INDIA</span>
+              <span class="text-[9px] font-black text-navy-eci dark:text-saffron tracking-wider">ELECTION COMMISSION OF
+                INDIA</span>
             </div>
-            <span id="mock-card-epic" class="text-[9px] font-black text-gray-800 dark:text-white font-mono bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded">EPIC NO: ABC1234567</span>
+            <span id="mock-card-epic"
+              class="text-[9px] font-black text-gray-800 dark:text-white font-mono bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded">EPIC
+              NO: ABC1234567</span>
           </div>
 
           <!-- Card Content Body -->
           <div class="flex items-center space-x-4 py-3 flex-grow">
             <!-- User Photo Placeholder -->
-            <div class="w-[70px] h-[90px] border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 flex items-center justify-center text-zinc-300 flex-shrink-0 shadow-inner rounded overflow-hidden">
+            <div
+              class="w-[70px] h-[90px] border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 flex items-center justify-center text-zinc-300 flex-shrink-0 shadow-inner rounded overflow-hidden">
               <i data-lucide="user" class="w-10 h-10"></i>
             </div>
             <!-- Identity Parameters -->
             <div class="space-y-1.5 text-[10px] leading-tight">
               <div>
                 <span class="text-gray-400 block font-bold">NAME:</span>
-                <span id="mock-card-name" class="font-extrabold text-navy-eci dark:text-white text-xs">CITIZEN NAME</span>
+                <span id="mock-card-name" class="font-extrabold text-navy-eci dark:text-white text-xs">CITIZEN
+                  NAME</span>
               </div>
               <div>
                 <span class="text-gray-400 block font-bold">STATE:</span>
@@ -207,23 +248,28 @@
           <!-- Card Footer badge -->
           <div class="flex justify-between items-center border-t border-gray-200/50 dark:border-gray-700/50 pt-2">
             <span class="text-[8px] font-extrabold text-gray-400 uppercase">Identity Card Preview</span>
-            <span id="mock-card-status" class="text-[9px] font-black uppercase bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-400 px-2 py-0.5 rounded border border-gray-200">Needs Action</span>
+            <span id="mock-card-status"
+              class="text-[9px] font-black uppercase bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-400 px-2 py-0.5 rounded border border-gray-200">Needs
+              Action</span>
           </div>
         </div>
 
         <!-- Official Voter ID Info Card displaying votersample.png -->
-        <div class="bg-white dark:bg-dark_card glass-card p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/80 space-y-4">
+        <div
+          class="bg-white dark:bg-dark_card glass-card p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/80 space-y-4">
           <div class="flex items-center space-x-2 text-navy-eci dark:text-saffron">
             <i data-lucide="card" class="w-5 h-5"></i>
             <h3 class="font-extrabold text-xs uppercase tracking-wider">Voter ID (EPIC) Card Sample</h3>
           </div>
           <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-semibold">
-            Below is a sample representation of the standard ECI issued Electors Photo Identity Card (EPIC). The unique alphanumeric code at the top is used to verify your registration name in the national directories.
+            Below is a sample representation of the standard ECI issued Electors Photo Identity Card (EPIC). The unique
+            alphanumeric code at the top is used to verify your registration name in the national directories.
           </p>
-          
+
           <!-- Sample image container -->
           <div class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-inner">
-            <img src="assets/images/votersample.png" alt="ECI Voter Card Sample Layout" class="w-full h-auto object-cover max-h-[300px]">
+            <img src="assets/images/votersample.png" alt="ECI Voter Card Sample Layout"
+              class="w-full h-auto object-cover max-h-[300px]">
           </div>
         </div>
 
@@ -233,73 +279,45 @@
 
   </main>
 
-  <!-- Sticky Bottom Navigation Bar on Mobile -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-dark_card/95 border-t border-gray-200 dark:border-gray-800 shadow-lg backdrop-blur-md px-4 py-2 flex justify-around items-center">
-    <a href="index.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="home" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Home</span>
-    </a>
-    <a href="dashboard.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">Roadmap</span>
-    </a>
-    <a href="evm-practice.html" class="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-saffron transition-all active:scale-95">
-      <i data-lucide="vote" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">EVM</span>
-    </a>
-    <a href="more.html" class="flex flex-col items-center text-saffron transition-all active:scale-95">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-      <span class="text-[10px] font-bold mt-1">More</span>
-    </a>
-  </div>
-
-  <!-- Floating Helper FAB -->
-  <div class="fixed bottom-6 right-6 z-40 fab-bounce">
-    <button onclick="toggleHelpDrawer()" class="flex items-center justify-center bg-saffron hover:bg-saffron-hover text-white w-14 h-14 rounded-full shadow-2xl active:scale-95 transition-theme" aria-label="Support Center">
-      <i data-lucide="help-circle" class="w-7 h-7"></i>
-    </button>
-  </div>
-
-  <!-- Floating Help Drawer -->
-  <div id="help-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white dark:bg-dark_card border-l border-gray-200 dark:border-gray-800 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4 mb-4">
-      <div class="flex items-center space-x-2 text-navy-eci dark:text-saffron">
-        <i data-lucide="info" class="w-5 h-5"></i>
-        <h3 class="font-extrabold text-base">Quick Help Drawer</h3>
-      </div>
-      <button onclick="toggleHelpDrawer()" class="p-1 rounded-lg text-gray-400 hover:bg-gray-100 dark:hover:bg-dark_bg">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-    </div>
-    <div class="space-y-4 text-xs">
-      <div class="space-y-1.5">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">ECI Help Desk</span>
-        <a href="tel:1950" class="flex items-center space-x-2 text-saffron font-bold text-sm bg-saffron/10 p-2.5 rounded-lg">
-          <i data-lucide="phone-call" class="w-4 h-4"></i>
-          <span>Voter Helpline: 1950</span>
-        </a>
-      </div>
-      <div class="space-y-1">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Am I Eligible?</span>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          You must be an Indian citizen, at least 18 years old on January 1st of the revision year, and registered in the electoral roll of your polling constituency.
-        </p>
-      </div>
-      <div class="space-y-2 border-t border-gray-100 dark:border-gray-800 pt-3">
-        <span class="font-bold text-gray-400 block uppercase tracking-wider">Official Voter App</span>
-        <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank" class="flex items-center justify-between bg-navy-eci text-white p-2.5 rounded-lg hover:bg-navy_eci-hover transition-colors font-bold">
-          <div class="flex items-center space-x-2">
-            <i data-lucide="smartphone" class="w-4.5 h-4.5"></i>
-            <span>Voter Helpline Mobile</span>
-          </div>
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
+  <!-- Floating Bottom Navigation Bar on Mobile -->
+  <div class="lg:hidden fixed bottom-5 left-5 right-5 z-[9999] premium-mobile-nav transition-all duration-300">
+    <div class="nav-items-wrapper">
+      <a href="index.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="home" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_home">Home</span>
+      </a>
+      <a href="timeline.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="list-todo" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_timeline">Timeline</span>
+      </a>
+      <a href="evm-practice.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="vote" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_evm">EVM</span>
+      </a>
+      <a href="booth-locator.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_booth">Booth</span>
+      </a>
+      <a href="more.html" class="nav-item" onclick="createRipple(event)">
+        <div class="icon-circle">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </div>
+        <span data-i18n="nav_more">More</span>
+      </a>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
+  <footer
+    class="bg-navy-eci dark:bg-dark_card text-white border-t border-navy-eci/20 py-10 mt-12 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-8">
         <div class="flex items-center space-x-3">
@@ -313,10 +331,9 @@
 
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
         <p class="max-w-3xl leading-relaxed text-center md:text-left" data-i18n="footer_disclaimer">
-          Disclaimer: This is an independent educational guide. Always refer to the official ECI portal for binding electoral rules.
+          Disclaimer: This project was built for Build with AI 2026 PromptWars. For official and updated election details, refer to the Election Commission of India (ECI) portal.
         </p>
         <div class="text-center md:text-right whitespace-nowrap">
-          <p>Last Updated: May 27, 2026</p>
           <p class="mt-0.5">&copy; 2026 ElectionGuide India.</p>
         </div>
       </div>
@@ -331,7 +348,7 @@
   <script src="js/storage.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/profile.js"></script>
-  
+
   <script>
     // Inline Toast Helper
     function showToast(message, type = 'info') {
@@ -342,7 +359,7 @@
       if (type === 'success') { bg = 'bg-green_eci'; icon = 'check-circle'; }
       if (type === 'error') { bg = 'bg-red-600'; icon = 'alert-triangle'; }
       if (type === 'warning') { bg = 'bg-saffron'; icon = 'bell'; }
-      
+
       toast.className = `flex items-center space-x-3 text-white px-5 py-3.5 rounded-xl shadow-lg transform transition-all duration-300 translate-y-2 opacity-0 max-w-sm ${bg}`;
       toast.innerHTML = `
         <i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i>
@@ -355,11 +372,6 @@
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => { toastContainer.removeChild(toast); }, 300);
       }, 4000);
-    }
-
-    function toggleHelpDrawer() {
-      const drawer = document.getElementById('help-drawer');
-      drawer.classList.toggle('translate-x-full');
     }
 
     function shareSocial(platform) {
@@ -375,4 +387,5 @@
     }
   </script>
 </body>
+
 </html>
